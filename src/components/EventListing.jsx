@@ -121,6 +121,7 @@ const EventListing = () => {
                   src={event.eventImage}
                   className="card-img-top"
                   alt="Event Image"
+                  style={{height:350}}
                 />
                 <div className="p-2">
                   <p className="card-text">
@@ -134,7 +135,7 @@ const EventListing = () => {
                       : event.eventTime + " AM"}
                   </p>
                   <NavLink
-                    className="btn fs-3"
+                    className="btn fs-5"
                     to={`/eventListing/${event._id}`}>
                     <p className="card-text">{event.eventTitle}</p>
                   </NavLink>
