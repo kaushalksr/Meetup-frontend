@@ -10,7 +10,7 @@ import EventDetails from "./components/EventDetails.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <CreateEvent />,
   },
   {
     path: "/createEvents",
