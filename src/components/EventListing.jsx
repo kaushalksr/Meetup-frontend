@@ -134,7 +134,7 @@ const EventListing = () => {
                       : event.eventTime + " AM"}
                   </p>
                   <NavLink
-                    className="btn btn-success btn-sm d-grid gap-2 py-2"
+                    className="btn fs-3"
                     to={`/eventListing/${event._id}`}>
                     <p className="card-text">{event.eventTitle}</p>
                   </NavLink>
