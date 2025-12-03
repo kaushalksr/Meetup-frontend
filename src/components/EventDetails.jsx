@@ -1,12 +1,16 @@
 import { Link, useParams } from "react-router-dom";
 import useFetch from "../useFetch";
 
-
 const EventDetails = () => {
-  const { data, loading, error } = useFetch("https://meetup-five-khaki.vercel.app/events");
+  const { data, loading, error } = useFetch(
+    "https://meetup-five-khaki.vercel.app/events"
+  );
   const { eventId } = useParams();
 
   const selectedEvent = data?.find((event) => event._id == eventId);
+
+  // const fromTime = data.eventFromTime;
+  // console.log(fromTime);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
@@ -43,7 +47,7 @@ const EventDetails = () => {
                   </li>
                 </ul>
               </div>
-              {/* ----------- */}
+              {/* ---- header end ------- */}
               <form className="d-flex">
                 <input
                   onChange={(e) => setSearchByTitle(e.target.value)}
@@ -105,12 +109,12 @@ const EventDetails = () => {
                   />{" "}
                   <span>
                     {" "}
-                    {parseInt(selectedEvent?.eventTime) > 12
-                      ? parseInt(selectedEvent?.eventTime) -
+                    {parseInt(selectedEvent?.eventFromTime) > 12
+                      ? parseInt(selectedEvent?.eventFromTime) -
                         12 +
-                        selectedEvent.eventTime.slice(2, 5) +
+                        selectedEvent.eventFromTime.slice(2, 5) +
                         "  PM"
-                      : selectedEvent?.eventTime + "  AM"}{" "}
+                      : selectedEvent?.eventFromTime + "  AM"}{" "}
                   </span>
                 </p>
                 <p className="card-text">

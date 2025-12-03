@@ -19,7 +19,7 @@ const EventListing = () => {
 
   useEffect(() => {
     if (data) {
-      const filtered = data.filter((event) =>
+      const filtered = data?.filter((event) =>
         event.eventTitle.toLowerCase().includes(searchByTitle.toLowerCase())
       );
       setSelectedEvent(filtered);
@@ -29,6 +29,9 @@ const EventListing = () => {
   const searchByTitleHandler = (value) => {
     setSearchByTitle(value);
   };
+
+  // const toTime = data.eventToTime;
+  console.log("data = ",data);
 
   const eventTypeHandler = (event) => {
     const value = event.target.value;
@@ -125,21 +128,27 @@ const EventListing = () => {
                   alt="Event Image"
                   style={{ height: 350 }}
                 />
-                <div className="p-2" style={{textAlign:"center",justifyContent:"center",alignItems:"center"}}>
+                <div
+                  className="p-2"
+                  style={{
+                    textAlign: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}>
                   <NavLink
                     className="fs-5 btn"
                     to={`/eventListing/${event._id}`}>
                     <p className="card-text">{event.eventTitle}</p>
                   </NavLink>
                   <p className="card-text">
-                    {event.eventDate.slice(0, 10)} ,{" "}
+                    {/* {event.eventDate.slice(0, 10)} ,{" "}
                     {parseInt(event.eventTime.slice(0, 2)) > 12
                       ? parseInt(event.eventTime.slice(0, 2)) -
                         12 +
                         ":" +
                         event.eventTime.slice(3, 6) +
                         " PM"
-                      : event.eventTime + " AM"}
+                      : event.eventTime + " AM"} */}
                   </p>
                 </div>
               </div>

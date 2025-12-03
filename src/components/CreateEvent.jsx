@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 
 const CreateEvent = () => {
   const [message, setMessage] = useState("");
+  const [messageColor, setMessageColor] = useState("");
   const [formData, setFormData] = useState({
     eventTitle: "",
     eventDate: "",
-    eventTime: "",
+    eventFromTime: "",
+    eventToTime: "",
     eventType: "",
     eventImage: "",
     hostedBy: "",
@@ -39,18 +41,24 @@ const CreateEvent = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("https://meetup-five-khaki.vercel.app/events", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      console.log(formData);
+      const response = await fetch(
+        "https://meetup-five-khaki.vercel.app/events",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      console.log("response = ", response);
+      console.log("formdata = ", formData);
       if (!response.ok) {
+        setMessageColor("red");
         throw "Failed to add event!";
       } else {
         setMessage("Event added sucessfully!");
+        setMessageColor("green");
       }
     } catch (error) {
       console.log(error);
@@ -133,17 +141,32 @@ const CreateEvent = () => {
                 name="eventDate"
               />
               <br />
-              <label className="form-label" htmlFor="eventTime">
-                Event Time:
+
+              {/* from time */}
+              <label className="form-label" htmlFor="eventFromTime">
+                From Time:
               </label>
               <input
                 onChange={handleChange}
                 type="time"
-                value={formData.eventTime}
-                name="eventTime"
+                value={formData.eventFromTime}
+                name="eventFromTime"
                 className="form-control"
               />
               <br />
+              <label className="form-label" htmlFor="eventToTime">
+                To Time:
+              </label>
+              <input
+                onChange={handleChange}
+                type="time"
+                value={formData.eventToTime}
+                name="eventToTime"
+                className="form-control"
+              />
+              <br />
+
+              {/* to time */}
               <label htmlFor="eventType" className="form-label">
                 Event Type:
               </label>
@@ -353,15 +376,15 @@ const CreateEvent = () => {
             type="submit">
             Add Event
           </button>
-          <span
+
+          <div
             style={{
-              color: "green",
+              color: messageColor,
               textAlign: "center",
               justifyContent: "center",
             }}>
-            {"   "}
             {message}
-          </span>
+          </div>
         </form>
       </main>
     </div>
