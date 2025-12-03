@@ -43,7 +43,7 @@ const CreateEvent = () => {
 
     try {
       const response = await fetch(
-        "https://meetup-git-main-kaushal-kishores-projects-52ddfca8.vercel.app?_vercel_share=R6NpSliz2fmRoVMQmUS6gGktuFECxpuU/events",
+        "https://meetup-five-khaki.vercel.app/events",
         {
           method: "POST",
           headers: {

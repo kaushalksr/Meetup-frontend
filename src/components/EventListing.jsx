@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 const EventListing = () => {
   const { data, loading, error } = useFetch(
-    "https://meetup-git-main-kaushal-kishores-projects-52ddfca8.vercel.app?_vercel_share=R6NpSliz2fmRoVMQmUS6gGktuFECxpuU/events"
+    "https://meetup-five-khaki.vercel.app/events"
   );
   const [selectedEvent, setSelectedEvent] = useState([]);
   const [searchByTitle, setSearchByTitle] = useState("");
