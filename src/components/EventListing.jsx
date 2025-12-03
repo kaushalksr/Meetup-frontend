@@ -1,12 +1,13 @@
 import useFetch from "../useFetch";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const EventListing = () => {
   const { data, loading, error } = useFetch(
-    "https://meetup-five-khaki.vercel.app/events"
+    "https://meetup-git-main-kaushal-kishores-projects-52ddfca8.vercel.app?_vercel_share=R6NpSliz2fmRoVMQmUS6gGktuFECxpuU/events"
   );
   const [selectedEvent, setSelectedEvent] = useState([]);
   const [searchByTitle, setSearchByTitle] = useState("");
@@ -26,14 +27,6 @@ const EventListing = () => {
     }
   }, [searchByTitle, data]);
 
-  const searchByTitleHandler = (value) => {
-    setSearchByTitle(value);
-  };
-
-  const toTime = data?.eventToTime;
-  console.log("to time = ", toTime);
-  console.log("data = ", data);
-
   const eventTypeHandler = (event) => {
     const value = event.target.value;
 
@@ -49,37 +42,43 @@ const EventListing = () => {
       {/* // ------------- header start  ------ */}
 
       <div>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container">
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <div className="container-fluid">
-                <ul className="navbar-nav">
-                  <li className="nav-item">
-                    <Link className="nav-link" to="">
-                      <img
-                        src="https://t3.ftcdn.net/jpg/02/76/15/74/240_F_276157446_vpzi561T0meuzGokF7QWYM6xGW2ASKQD.jpg"
-                        alt="Bootstrap"
-                        width="150"
-                        height="50"
-                      />
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link fs-3" to="/createEvents">
-                      Create Event
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link fs-3" to="/eventListing">
-                      Event Listing
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              {/* ----------- */}
+        {" "}
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container">
+            <Link className="nav-link" to="/">
+              <img
+                src="https://t3.ftcdn.net/jpg/02/76/15/74/240_F_276157446_vpzi561T0meuzGokF7QWYM6xGW2ASKQD.jpg"
+                alt="Bootstrap"
+                width="150"
+                height="50"
+              />
+            </Link>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <Link className="nav-link fs-3" to="/createEvents">
+                    Create Event
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link className="nav-link fs-3" to="/eventListing">
+                    Event Listing
+                  </Link>
+                </li>
+              </ul>
               <form className="d-flex">
                 <input
-                  onChange={(e) => searchByTitleHandler(e.target.value)}
+                  onChange={(e) => setSearchByTitle(e.target.value)}
                   type="text"
                   placeholder="Search By Title"
                   role="search"
@@ -109,7 +108,7 @@ const EventListing = () => {
 
         <div className="row mt-5">
           {selectedEvent?.map((event) => (
-            <div key={event._id} className="col-lg-4">
+            <div key={event._id} className="col-lg-4 col-md-12">
               <div
                 className="card m-4"
                 style={{ width: 350, height: 350, border: 0 }}>

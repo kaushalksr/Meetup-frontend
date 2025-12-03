@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -42,7 +43,7 @@ const CreateEvent = () => {
 
     try {
       const response = await fetch(
-        "https://meetup-five-khaki.vercel.app/events",
+        "https://meetup-git-main-kaushal-kishores-projects-52ddfca8.vercel.app?_vercel_share=R6NpSliz2fmRoVMQmUS6gGktuFECxpuU/events",
         {
           method: "POST",
           headers: {
@@ -51,8 +52,6 @@ const CreateEvent = () => {
           body: JSON.stringify(formData),
         }
       );
-      console.log("response = ", response);
-      console.log("formdata = ", formData);
       if (!response.ok) {
         setMessageColor("red");
         throw "Failed to add event!";
@@ -67,57 +66,60 @@ const CreateEvent = () => {
 
   return (
     <div className="mb-5">
-      {/* // ------------- header start  ------ */}
+      {/* new header */}
 
-      <div>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container">
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <div className="container-fluid">
-                <ul className="navbar-nav">
-                  <li className="nav-item">
-                    <Link className="nav-link" to="">
-                      <img
-                        src="https://t3.ftcdn.net/jpg/02/76/15/74/240_F_276157446_vpzi561T0meuzGokF7QWYM6xGW2ASKQD.jpg"
-                        alt="Bootstrap"
-                        width="150"
-                        height="50"
-                      />
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link fs-3" to="/createEvents">
-                      Create Event
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link fs-3" to="/eventListing">
-                      Event Listing
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              {/* ----------- */}
-              <form className="d-flex">
-                <input
-                  onChange={(e) => setSearchByTitle(e.target.value)}
-                  type="text"
-                  placeholder="Search By Title"
-                  role="search"
-                  className="form-control"
-                />
-              </form>
-            </div>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <Link className="nav-link" to="/">
+            <img
+              src="https://t3.ftcdn.net/jpg/02/76/15/74/240_F_276157446_vpzi561T0meuzGokF7QWYM6xGW2ASKQD.jpg"
+              alt="Bootstrap"
+              width="150"
+              height="50"
+            />
+          </Link>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <Link className="nav-link fs-3" to="/createEvents">
+                  Create Event
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link className="nav-link fs-3" to="/eventListing">
+                  Event Listing
+                </Link>
+              </li>
+            </ul>
+            <form className="d-flex">
+              <input
+                onChange={(e) => setSearchByTitle(e.target.value)}
+                type="text"
+                placeholder="Search By Title"
+                role="search"
+                className="form-control"
+              />
+            </form>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
 
-      {/* // ------------- header end  ------ */}
+      {/* new header end */}
       <main className="container">
         <h1>Create New Event</h1>
         <form onSubmit={handleFormSubmit}>
           <div className="row">
-            <div className="col-lg-6">
+            <div className="col-lg-6 col-sm-12">
               <label className="form-label" htmlFor="eventTitle">
                 Event Title:{" "}
               </label>
@@ -229,7 +231,7 @@ const CreateEvent = () => {
               />
               <br />
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 col-sm-12">
               <label htmlFor="eventAge" className="form-label">
                 Event Age:{" "}
               </label>
