@@ -106,7 +106,9 @@ const EventListing = () => {
         <div className="row mt-5">
           {selectedEvent?.map((event) => (
             <div key={event._id} className="col-lg-4">
-              <div className="card m-4" style={{ width: 350, height: 350 }}>
+              <div
+                className="card m-4"
+                style={{ width: 350, height: 350, border: 0 }}>
                 <span
                   className="btn btn-light btn-sm"
                   style={{
@@ -121,9 +123,14 @@ const EventListing = () => {
                   src={event.eventImage}
                   className="card-img-top"
                   alt="Event Image"
-                  style={{height:350}}
+                  style={{ height: 350 }}
                 />
-                <div className="p-2">
+                <div className="p-2" style={{textAlign:"center",justifyContent:"center",alignItems:"center"}}>
+                  <NavLink
+                    className="fs-5 btn"
+                    to={`/eventListing/${event._id}`}>
+                    <p className="card-text">{event.eventTitle}</p>
+                  </NavLink>
                   <p className="card-text">
                     {event.eventDate.slice(0, 10)} ,{" "}
                     {parseInt(event.eventTime.slice(0, 2)) > 12
@@ -134,11 +141,6 @@ const EventListing = () => {
                         " PM"
                       : event.eventTime + " AM"}
                   </p>
-                  <NavLink
-                    className="btn fs-5"
-                    to={`/eventListing/${event._id}`}>
-                    <p className="card-text">{event.eventTitle}</p>
-                  </NavLink>
                 </div>
               </div>
             </div>
