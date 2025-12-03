@@ -9,8 +9,8 @@ const EventDetails = () => {
 
   const selectedEvent = data?.find((event) => event._id == eventId);
 
-  // const fromTime = data.eventFromTime;
-  // console.log(fromTime);
+  const fromTime = data?.eventFromTime;
+  console.log(fromTime);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;

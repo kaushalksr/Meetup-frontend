@@ -30,8 +30,9 @@ const EventListing = () => {
     setSearchByTitle(value);
   };
 
-  // const toTime = data.eventToTime;
-  console.log("data = ",data);
+  const toTime = data?.eventToTime;
+  console.log("to time = ", toTime);
+  console.log("data = ", data);
 
   const eventTypeHandler = (event) => {
     const value = event.target.value;
