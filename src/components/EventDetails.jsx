@@ -109,12 +109,15 @@ const EventDetails = () => {
               </p>
             </div>
 
-            <img
-              className="mx-auto"
-              style={{ width: 350, height: 300 }}
-              src={`${selectedEvent?.eventImage}`}
-              alt="Event Image"
-            />
+            
+              <img
+                className="img-fluid w-100"
+                style={{ height: 300, objectFit: "cover" }}
+                src={`${selectedEvent?.eventImage}`}
+                alt="Event Image"
+              />
+            
+
             <p className="fs-3 fw-bolder">Details:</p>
             <p className="fs-4">{selectedEvent?.eventDescription}</p>
             <p className="fs-3 fw-bolder">Additional Information:</p>
