@@ -110,7 +110,8 @@ const EventDetails = () => {
             </div>
 
             <img
-              style={{ width: 400, height: 300 }}
+              className="mx-auto"
+              style={{ width: 350, height: 300 }}
               src={`${selectedEvent?.eventImage}`}
               alt="Event Image"
             />

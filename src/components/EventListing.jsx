@@ -127,9 +127,9 @@ const EventListing = () => {
 
         <div className="row mt-5">
           {selectedEvent?.map((event) => (
-            <div key={event._id} className="col-lg-4 col-md-12">
+            <div key={event._id} className="col-lg-4 col-md-12 p-2">
               <div
-                className="card m-4"
+                className="card m-4 mx-auto"
                 style={{ width: 350, height: 350, border: 0 }}>
                 <span
                   className="btn btn-light btn-sm"
@@ -145,7 +145,12 @@ const EventListing = () => {
                   src={event.eventImage}
                   className="card-img-top"
                   alt="Event Image"
-                  style={{ height: 350 }}
+                  style={{
+                    height: 350,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
                 />
                 <div
                   className="p-2"
