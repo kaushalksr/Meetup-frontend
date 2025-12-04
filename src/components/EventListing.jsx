@@ -20,9 +20,16 @@ const EventListing = () => {
 
   useEffect(() => {
     if (data) {
-      const filtered = data?.filter((event) =>
-        event.eventTitle.toLowerCase().includes(searchByTitle.toLowerCase())
-      );
+      const searchText = searchByTitle.toLocaleLowerCase();
+
+      const filtered = data?.filter((event) => {
+        const matchTitle = event.eventTitle?.toLowerCase().includes(searchText);
+        const matchTag = event.eventTags?.some((tag) =>
+          tag.toLowerCase().includes(searchText)
+        );
+
+        return matchTag || matchTitle;
+      });
       setSelectedEvent(filtered);
     }
   }, [searchByTitle, data]);
@@ -35,25 +42,6 @@ const EventListing = () => {
     setSelectedEvent(value === "Both" || value === "" ? data : filteredEvent);
   };
 
-  // event date ----
-
-  // const date = selectedEvent?.eventDate.slice(0, 10);
-
-  // const weekDay = new Date(date)?.toLocaleDateString("en-US", {
-  //   weekday: "short",
-  // });
-
-  // const month = new Date(date).toLocaleDateString("en-US", {
-  //   month: "short",
-  // });
-
-  // const day = new Date(date).getDay();
-  // const year = new Date(date).getFullYear();
-
-  // const dateOfEvent = weekDay + " " + month + " " + day + ", " + year + " ";
-
-  // event date end ----
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error ocurred!!</p>;
   return (
@@ -62,8 +50,8 @@ const EventListing = () => {
 
       <div>
         {" "}
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+          <div className="container">
             <Link className="nav-link" to="/">
               <img
                 src="https://t3.ftcdn.net/jpg/02/76/15/74/240_F_276157446_vpzi561T0meuzGokF7QWYM6xGW2ASKQD.jpg"
@@ -73,23 +61,23 @@ const EventListing = () => {
               />
             </Link>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent"
               aria-expanded="false"
               aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
                   <Link className="nav-link fs-3" to="/createEvents">
                     Create Event
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <Link className="nav-link fs-3" to="/eventListing">
                     Event Listing
                   </Link>
@@ -99,7 +87,7 @@ const EventListing = () => {
                 <input
                   onChange={(e) => setSearchByTitle(e.target.value)}
                   type="text"
-                  placeholder="Search By Title"
+                  placeholder="Search By Title and Tags"
                   role="search"
                   className="form-control"
                 />
