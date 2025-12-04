@@ -35,6 +35,25 @@ const EventListing = () => {
     setSelectedEvent(value === "Both" || value === "" ? data : filteredEvent);
   };
 
+  // event date ----
+
+  // const date = selectedEvent?.eventDate.slice(0, 10);
+
+  // const weekDay = new Date(date)?.toLocaleDateString("en-US", {
+  //   weekday: "short",
+  // });
+
+  // const month = new Date(date).toLocaleDateString("en-US", {
+  //   month: "short",
+  // });
+
+  // const day = new Date(date).getDay();
+  // const year = new Date(date).getFullYear();
+
+  // const dateOfEvent = weekDay + " " + month + " " + day + ", " + year + " ";
+
+  // event date end ----
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error ocurred!!</p>;
   return (
@@ -141,14 +160,13 @@ const EventListing = () => {
                     <p className="card-text">{event.eventTitle}</p>
                   </NavLink>
                   <p className="card-text">
-                    {/* {event.eventDate.slice(0, 10)} ,{" "}
-                    {parseInt(event.eventTime.slice(0, 2)) > 12
-                      ? parseInt(event.eventTime.slice(0, 2)) -
+                    {new Date(event.eventDate).toDateString()}{" "}
+                    {parseInt(event.eventFromTime) > 12
+                      ? parseInt(event.eventFromTime) -
                         12 +
-                        ":" +
-                        event.eventTime.slice(3, 6) +
+                        event.eventFromTime.slice(2, 5) +
                         " PM"
-                      : event.eventTime + " AM"} */}
+                      : event.eventFromTime + " AM"}
                   </p>
                 </div>
               </div>
